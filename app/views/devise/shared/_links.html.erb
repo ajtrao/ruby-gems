@@ -23,5 +23,5 @@
     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
 <% end %>
 
-
+<%= link_to "Sign in with fb",user_facebook_omniauth_authorize_path, method: :post %><br 
 <% end %>

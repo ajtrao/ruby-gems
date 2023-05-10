@@ -25,8 +25,21 @@
 <b><%= 'locked_at'.humanize  %> :</b>
 <%= user.locked_at %></br>
 
+<b><%= 'provider'.humanize  %> :</b>
+<%= user.provider %></br>
 
-    
+<b><%= 'uid'.humanize  %> :</b>
+<%= user.uid %></br>
+
+<b><%= 'name'.humanize  %> :</b>
+<%= user.name %></br>
+
+<% if user.image.present?%>
+    <b><%= 'image'.humanize  %> :</b>
+    <%= image_tag user.image, size: "50x50", alt: "ajt" %></br>
+<%end%>
+
+
 <% if user.access_locked?%>
     <%= link_to 'Unban', ban_user_path(user), method: :patch%>
 <% else %>
