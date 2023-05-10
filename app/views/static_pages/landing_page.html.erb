@@ -4,8 +4,12 @@
 
 <%= link_to privacy_policy_path  do %>
   <i class="fa-solid fa-link"></i>
-  
 <%end%>
 
+<% if Rails.env.development? %>
+  <p>Development</p>
+<% elsif Rails.env.production? %>
+  <p>Production</p>
+<%end%>
 
 
