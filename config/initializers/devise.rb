@@ -275,12 +275,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   
   
-  if Rails.env.development?
-    config.omniauth :github, '365cc84330bcb5897092', '58b906b7b7a392d6872e38fef7c737515013d0c1', scope: 'user'
-  elsif Rails.env.production?
-    config.omniauth :github, 'c309c5d281c5fc7d9f40', 'a369463522ef28bd66e869165c9d026bd731607b', scope: 'user'
-  end
-  config.omniauth :google_oauth2, '408965837303-ba8reeviqp463q3riuisj6d5bhk1qs6q.apps.googleusercontent.com', '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'
+
+  config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret], scope: 'user'
+  config.omniauth :google_oauth2, Rails.application.credentials.dig(:google_oauth2, :client_id) , Rails.application.credentials.dig(:google_oauth2, :client_secret)
   config.omniauth :facebook, '1245175179721273', '2b7c2f6d9333e26555579f4341c97fe2'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
