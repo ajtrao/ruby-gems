@@ -1,0 +1,14 @@
+Editing Roles for <%= @user.email%>
+<%= form_for(@user) do |f| %>
+
+  <% User::ROLES.each do |role|%>
+    <label>
+      <%= f.check_box role %>
+      <%= role.to_s.humanize %>
+    </label>
+    <br>
+  <% end %>
+  <%= f.button :submit%>
+<% end %>
+
+<%= link_to 'cancel', user_path(@user)%> | <%= link_to 'all user list', users_path%>
