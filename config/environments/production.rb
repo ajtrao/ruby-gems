@@ -10,19 +10,11 @@ require "active_support/core_ext/integer/time"
     config.action_mailer.smtp_settings = {
     port: 587,
     address: 'email-smtp.us-east-2.amazonaws.com',
-    user_name: 'AKIAWHPZRY7VIUY5UPWN',
-    password: 'BGEG4qXLSQOAg5ZOc8r1oShOSJL9E5FANy/aPPTGH83C',
+    user_name: 'AKIAWHPZRY7VEZOA6JLJ',
+    password: 'BK/uhqufmkmTmt0uo4YTPfr90HhcFIuuF79ZWcvvJr66',
     authentication: :plain,
     enable_starttls_auto: true
   }
-  
-
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
-    email: {
-      email_prefix: '[PREFIX] ',
-      sender_address: %{"app error" <schoolzphs.herokuapp.com>},
-      exception_recipients: %w{rao.dappepalli@gmail.com}
-    }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
