@@ -15,6 +15,13 @@ Rails.application.configure do
   authentication: :plain,
   enable_starttls_auto: true
 }
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: '[PREFIX] ',
+      sender_address: %{"app error" <schoolzphs.herokuapp.com>},
+      exception_recipients: %w{rao.dappepalli@gmail.com}
+    }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
