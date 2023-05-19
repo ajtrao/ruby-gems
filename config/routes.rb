@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :destroy, :edit, :update, :destroy] do
     member do
       patch :ban
+      patch :resend_confirmation_instructions
+      patch :resend_invitation
     end
   end
   root 'static_pages#landing_page'

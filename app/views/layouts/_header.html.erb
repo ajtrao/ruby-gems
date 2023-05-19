@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark text-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <i class="fas fa-flag"></i>
@@ -13,10 +13,18 @@
           <div class="fa fa-home"></div>
           Home
         <% end %>
-        <%= link_to users_path, class: "nav-link #{'active fw-bold' if current_page?(users_path)}" do %>
-          <div class="fa fa-users"></div>
-          Users
+          <% if current_user %>
+          <%= link_to users_path, class: "nav-link #{'active fw-bold' if current_page?(users_path)}" do %>
+            <div class="fa fa-users"></div>
+            Users
+          <% end %>
+          <% if current_user.admin?%>
+            <%= link_to new_user_invitation_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_invitation_path)}" do %>
+              InviteUsers
+            <% end %>
+          <%end%>
         <% end %>
+        
       </ul>
       <ul class="navbar-nav ms-auto">
         <% if current_user %>
@@ -48,3 +56,5 @@
     </div>
   </div>
 </nav>
+
+
