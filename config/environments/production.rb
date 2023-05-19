@@ -1,20 +1,21 @@
 require "active_support/core_ext/integer/time"
 
-Rails.application.configure do
+  Rails.application.configure do
+    
+    config.action_mailer.default_url_options = {host: "schoolzphs.herokuapp.com", protocol: "https"}
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
   
-  config.action_mailer.default_url_options = {host: "schoolzphs.herokuapp.com", protocol: "https"}
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  port: 587,
-  address: 'email-smtp.us-east-2.amazonaws.com',
-  user_name: 'AKIAWHPZRY7VIUY5UPWN',
-  password: 'BGEG4qXLSQOAg5ZOc8r1oShOSJL9E5FANy/aPPTGH83C',
-  authentication: :plain,
-  enable_starttls_auto: true
-}
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'email-smtp.us-east-2.amazonaws.com',
+    user_name: 'AKIAWHPZRY7VIUY5UPWN',
+    password: 'BGEG4qXLSQOAg5ZOc8r1oShOSJL9E5FANy/aPPTGH83C',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
     email: {
