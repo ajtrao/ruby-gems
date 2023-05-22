@@ -5,14 +5,14 @@ require "active_support/core_ext/integer/time"
     config.action_mailer.perform_deliveries = true
     config.action_mailer.raise_delivery_errors = true
   
-    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :ses
     config.action_mailer.smtp_settings = {
-    port: 587,
     address: 'email-smtp.us-east-2.amazonaws.com',
     user_name: 'AKIAWHPZRY7VF4DQREPK',
     password: 'BOsPKsi7OWzKddDA2bQ87XBJEMIr/NMz540j/ozGJ9f2',
-    authentication: :plain,
+    authentication: :login,
     enable_starttls_auto: true
+    
   }
   # Settings specified here will take precedence over those in config/application.rb.
 

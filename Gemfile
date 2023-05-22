@@ -65,4 +65,7 @@ gem 'devise_invitable', '~> 2.0.0'
 
 group :production do
   gem 'exception_notification'
+  gem 'aws-sdk-ses'
 end
+
+
