@@ -1,7 +1,19 @@
 require "active_support/core_ext/integer/time"
 
   Rails.application.configure do
-
+    config.action_mailer.default_url_options = {host: "schoolzphs.herokuapp.com/", protocol: "https"}
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
+  
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'email-smtp.us-east-2.amazonaws.com',
+    user_name: 'AKIAWHPZRY7VF4DQREPK',
+    password: 'BOsPKsi7OWzKddDA2bQ87XBJEMIr/NMz540j/ozGJ9f2',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -29,7 +41,7 @@ require "active_support/core_ext/integer/time"
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
