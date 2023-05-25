@@ -325,7 +325,7 @@ Devise.setup do |config|
   
   
 
-  config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret], scope: 'user'
+  config.omniauth :github, Rails.application.credentials.dig(Rails.env.to_sym, :github, :id), Rails.application.credentials.dig(Rails.env.to_sym, :github, :secret), scope: 'user'
   config.omniauth :google_oauth2, Rails.application.credentials.dig(:google_oauth2, :client_id) , Rails.application.credentials.dig(:google_oauth2, :client_secret)
   config.omniauth :facebook , '1245175179721273', '2b7c2f6d9333e26555579f4341c97fe2'
   # ==> Warden configuration
