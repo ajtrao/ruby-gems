@@ -3,17 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   config.hosts << "db47b22ff7c8456081d36cc20551b966.vfs.cloud9.us-east-1.amazonaws.com"
   config.action_mailer.default_url_options = { host: 'https://db47b22ff7c8456081d36cc20551b966.vfs.cloud9.us-east-1.amazonaws.com/' }
-  
-  config.action_mailer.delivery_method = :ses
-  config.action_mailer.smtp_settings = {
-  address: 'email-smtp.us-east-2.amazonaws.com',
-  user_name: 'AKIAWHPZRY7VF4DQREPK',
-  password: 'BOsPKsi7OWzKddDA2bQ87XBJEMIr/NMz540j/ozGJ9f2',
-  authentication: :login,
-  enable_starttls_auto: true
-}
 
-  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
