@@ -1,21 +1,20 @@
 require "active_support/core_ext/integer/time"
 
   Rails.application.configure do
-    config.action_mailer.default_url_options = {host: "schoolzphs.herokuapp.com", protocol: "https"}
-    config.action_mailer.perform_deliveries = true
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'schoolzphs.herokuapp.com',
-    user_name:            Rails.application.credentials.dig(:gmail_smtp, :username),
-    password:             Rails.application.credentials.dig(:gmail_smtp, :password),
-    authentication:       'plain',
-    enable_starttls_auto: true,
-    open_timeout:         5,
-    read_timeout:         5 }
-  
+  config.action_mailer.default_url_options = {host: "schoolzphs.herokuapp.com", protocol: "https"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'schoolzphs.herokuapp.com',
+  user_name:            Rails.application.credentials.dig(:gmail_smtp, :user_name),
+  password:             Rails.application.credentials.dig(:gmail_smtp, :password),
+  authentication:       'plain',
+  enable_starttls_auto: true,
+  open_timeout:         5,
+  read_timeout:         5 }
 
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
