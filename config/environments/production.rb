@@ -7,7 +7,7 @@ require "active_support/core_ext/integer/time"
     config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'db47b22ff7c8456081d36cc20551b966.vfs.cloud9.us-east-1.amazonaws.com',
+    domain:               'schoolzphs.herokuapp.com',
     user_name:            Rails.application.credentials.dig(:gmail_smtp, :username),
     password:             Rails.application.credentials.dig(:gmail_smtp, :password),
     authentication:       'plain',
