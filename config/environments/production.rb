@@ -15,6 +15,14 @@ require "active_support/core_ext/integer/time"
     enable_starttls_auto: true
     
   }
+  
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    deliver_with: :deliver,
+    email_prefix: '[PREFIX] ',
+    sender_address: %{"app error" <schoolzphs.herokuapp.com>},
+    exception_recipients: %w{rao.dappepalli@gmail.com}
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
