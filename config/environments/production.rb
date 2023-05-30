@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
   Rails.application.configure do
-    config.action_mailer.default_url_options = {host: "schoolzphs.herokuapp.com/", protocol: "https"}
+    config.action_mailer.default_url_options = {host: "superauth.herokuapp.com/", protocol: "https"}
     config.action_mailer.perform_deliveries = true
     config.action_mailer.raise_delivery_errors = true
   
@@ -20,7 +20,7 @@ require "active_support/core_ext/integer/time"
   email: {
     deliver_with: :deliver,
     email_prefix: '[PREFIX] ',
-    sender_address: %{"app error" <schoolzphs.herokuapp.com>},
+    sender_address: %{"app error" <superauth.herokuapp.com>},
     exception_recipients: %w{rao.dappepalli@gmail.com}
   }
   # Settings specified here will take precedence over those in config/application.rb.
