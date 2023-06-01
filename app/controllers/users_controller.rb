@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_admin, only: [:edit, :ban, :destroy, :resend_confirmation_instructions ]
+  before_action :require_admin, only: [ :ban, :destroy, :resend_confirmation_instructions ]
   before_action :require_admin_or_inviter, only: [:resend_invitation]
+  before_action :require_admin_or_owner, only: [:edit, :update]
   
   def index
     @users = User.all.order(created_at: :desc)
@@ -26,13 +27,16 @@ class UsersController < ApplicationController
   
   def ban
     @user =User.find(params[:id])
-    
-    if @user.access_locked?
-      @user.unlock_access!
+    if current_user==@user
+      redirect_to users_path, alert: "you can't ban yourself"
     else
-    @user.lock_access!
+      if @user.access_locked?
+        @user.unlock_access!
+      else
+      @user.lock_access!
+      end
+      redirect_to users_path, notice: "user status banned #{@user.access_locked?}"
     end
-    redirect_to users_path, notice: "user status banned #{@user.access_locked?}"
   end
   
   def resend_confirmation_instructions
@@ -77,10 +81,19 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(*User::ROLES)
+    list_params_allowed = [:name] if current_user == @user || current_user.admin?
+    list_params_allowed += [*User::ROLES] if current_user.admin?
+    params.require(:user).permit(list_params_allowed)
   end
   def require_admin
     unless current_user.admin?
+      redirect_to root_path , alert: "you are not an autherized person to perform this tasks"
+    end
+  end
+  
+  def require_admin_or_owner
+    @user = User.find(params[:id])
+    unless current_user==@user || current_user.admin? 
       redirect_to root_path , alert: "you are not an autherized person to perform this tasks"
     end
   end

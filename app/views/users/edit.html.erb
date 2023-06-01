@@ -4,13 +4,16 @@
   </div>
   <div class="card-body">
    <%= form_for(@user) do |f| %>
-
-    <% User::ROLES.each do |role|%>
-    <label>
-      <%= f.check_box role %>
-      <%= role.to_s.humanize %>
-    </label>
-    <br>
+    <%= f.label :name%>
+    <%= f.text_field :name%><br>
+    <% if current_user.admin? %>
+      <% User::ROLES.each do |role|%>
+      <label>
+        <%= f.check_box role %>
+        <%= role.to_s.humanize %>
+      </label>
+      <br>
+      <% end %>
     <% end %>
     <%= f.button :submit%>
   <% end %>
