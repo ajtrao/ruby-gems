@@ -239,6 +239,9 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -305,6 +308,7 @@ DEPENDENCIES
   rails (~> 6.1.4)
   sass-rails (>= 6)
   selenium-webdriver
+  simple_form
   spring
   turbolinks (~> 5)
   tzinfo-data

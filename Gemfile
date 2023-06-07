@@ -67,4 +67,5 @@ group :production do
   gem 'exception_notification'
 end
 
+gem 'simple_form'
 
