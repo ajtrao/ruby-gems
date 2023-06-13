@@ -112,6 +112,7 @@ GEM
     hashie (5.0.0)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
+    ice_cube (0.16.4)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   devise
   devise_invitable (~> 2.0.0)
   exception_notification
+  ice_cube
   jbuilder (~> 2.7)
   listen (~> 3.3)
   omniauth-facebook

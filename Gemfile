@@ -68,4 +68,5 @@ group :production do
 end
 
 gem 'simple_form'
+gem 'ice_cube'
 

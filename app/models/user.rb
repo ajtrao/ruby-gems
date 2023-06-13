@@ -30,5 +30,13 @@ class User < ApplicationRecord
   after_create do
     self.update(student:true)
   end
+  
+  def to_s
+    email
+  end
+  
+  def to_label
+    to_s
+  end
 
 end
