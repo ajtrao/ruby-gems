@@ -19,7 +19,7 @@
     <br>
     
     <b>Start time:</b>
-    <%= @course.start_time.strftime('%H:%M') %>
+    <%= @course.start&.strftime('%H:%M') %>
     <br>
     
     <b>Days</b>
@@ -32,3 +32,5 @@
     <%= link_to 'Destroy', @course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
   </div>
 </div>
+
+<%= render 'lessons/lessons'%>

@@ -24,6 +24,12 @@
             <% end %>
           <%end%>
           <% if current_user.admin?%>
+            <%= link_to calender_path, class: "nav-link #{'active fw-bold' if current_page?(calender_path)}" do %>
+              <div class="fa-regular fa-calendar"></div>
+              Calender
+            <% end %>
+          <%end%>
+          <% if current_user.admin?%>
             <%= link_to classrooms_path, class: "nav-link #{'active fw-bold' if current_page?(classrooms_path)}" do %>
               <div class="fa fa-door-open"></div>
               Classrooms
@@ -39,6 +45,12 @@
             <%= link_to courses_path, class: "nav-link #{'active fw-bold' if current_page?(courses_path)}" do %>
               <div class="fa fa-user-friends"></div>
               Courses
+            <% end %>
+          <%end%>
+          <% if current_user.admin?%>
+            <%= link_to lessons_path, class: "nav-link #{'active fw-bold' if current_page?(lessons_path)}" do %>
+              <div class="fa fa-list"></div>
+              Lessons
             <% end %>
           <%end%>
         <% end %>

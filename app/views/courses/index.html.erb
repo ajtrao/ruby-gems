@@ -41,16 +41,17 @@
           
             <td><%= course.service %></td>
             
-            <td><%= course.start_time.strftime('%H:%M') if course.start_time? %></td>
+            <td><%= course.start.strftime('%H:%M') if course.start? %></td>
             
             <td><%= course.active_days.join(",") %></td>
             
             <td><%= course.schedule %></td>
             
-            <td><% course.schedule.occurrences(Time.now+1.month).each do |occurrence| %>
+            <td><% course.schedule.next_occurrences(8).each do |occurrence| %>
                   <%= occurrence.strftime('%d/%b/%y') %>
                   <br>
                 <% end %>
+                <%= link_to 'generate lessons', generate_lessons_course_path(course), method: :patch%>
             </td>
           
           <td>

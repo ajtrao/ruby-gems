@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :courses
+  resources :lessons
+  resources :courses do
+    member do
+      patch :generate_lessons
+    end
+  end
   resources :services
   resources :classrooms
   devise_for :users, controllers: { 
@@ -14,6 +19,8 @@ Rails.application.routes.draw do
   end
   root 'static_pages#landing_page'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'calender', to: 'static_pages#calender'
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

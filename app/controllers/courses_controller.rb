@@ -1,13 +1,24 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :set_course, only: %i[ show edit update destroy, generate_lessons ]
 
   # GET /courses or /courses.json
   def index
     @courses = Course.all
   end
+  
+  def generate_lessons
+    #delete future generations to regenerate them
+    @course.lessons.where("start > ?", Time.now).destroy_all
+    
+    #generate next 8 occurences
+    @course.schedule.next_occurrences(8).each do |occurrence|
+      @course.lessons.find_or_create_by(start: occurrence, user: @course.user, classroom: @course.classroom)
+    end
+  end
 
   # GET /courses/1 or /courses/1.json
   def show
+    @lessons = @course.lessons
   end
 
   # GET /courses/new
